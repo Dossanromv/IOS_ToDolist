@@ -7,13 +7,24 @@
 
 import SwiftUI
 
+
+
+
 struct ContentView: View {
+    
+    
+    @State private var tasks = ["Купить продукты", "Учить Swift", "Сделать проект"]
+    
+    
     var body: some View {
-        VStack {
-            
-            
-            
-        }
+        
+        NavigationView {
+                List(tasks, id: \.self) { task in
+                    Text(task)
+                }
+                .navigationTitle("To Do List")
+            }
+
         .padding()
     }
 }
