@@ -27,7 +27,7 @@ struct ContentView: View {
             TaskItem(title: "Сделать зарядку")
         ]
     
-    
+
     
     @State private var newTask = ""
 
@@ -38,7 +38,14 @@ struct ContentView: View {
             
             NavigationView {
                 
+                
+                List(tasks, id: \.self) { task in
+                            Text(task)
+                        }
+
+                
                 List(tasks) { task in HStack {
+                    
                     
                     
                     Button(action: {
@@ -53,6 +60,7 @@ struct ContentView: View {
                 }
                     
                 }
+                .navigationTitle("To Do List")
             }
             
         }
