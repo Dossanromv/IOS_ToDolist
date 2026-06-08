@@ -21,7 +21,7 @@ A simple iOS task management app written in SwiftUI.
 
 ## Screenshots
 
-
+![image alt](https://github.com/Dossanromv/IOS_ToDolist/blob/1819cec7c2f3ea10faa64a89a23017f510f2f713/ScreensShot.png)
 
 
 
