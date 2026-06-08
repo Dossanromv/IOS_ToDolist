@@ -42,10 +42,18 @@ struct ContentView: View {
 
                 List{
                     ForEach(tasks) { task in
-                        Text(task.title)
-                    }
-                    .onDelete { indexSet in
-                        tasks.remove(atOffsets: indexSet)
+                        HStack {
+                            Text(task.title)
+                            Spacer()
+                            Button {
+                                withAnimation {
+                                        tasks.removeAll { $0.id == task.id }
+                                    }
+                            } label: {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                            }
+                        }
                     }
                 }
 
@@ -57,12 +65,14 @@ struct ContentView: View {
         
 
                     Button("Добавить") {
-                        if !newTask.isEmpty {
-                            
-                            
-                            tasks.append(TaskItem(title: newTask))
-                            newTask = ""
-                            isEditing = false
+                        
+                        withAnimation {
+                            if !newTask.isEmpty {
+                                tasks.append(TaskItem(title: newTask))
+                                newTask = ""
+                                isEditing = false
+
+                        }
                         }
                     }
                 }
