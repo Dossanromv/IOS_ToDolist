@@ -43,16 +43,35 @@ struct ContentView: View {
                 List{
                     ForEach(tasks) { task in
                         HStack {
-                            Text(task.title)
-                            Spacer()
+                            
+                            
                             Button {
-                                withAnimation {
-                                        tasks.removeAll { $0.id == task.id }
+                                        withAnimation {
+                                            if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                                                tasks[index].isCompleted.toggle()
+                                            }
+                                        }
+                                    } label: {
+                                        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                            .foregroundColor(task.isCompleted ? .green : .gray)
                                     }
-                            } label: {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                            }
+
+
+                                    Text(task.title)
+                                        .strikethrough(task.isCompleted)
+                                        .foregroundColor(task.isCompleted ? .gray : .primary)
+
+                                    Spacer()
+                            
+//                            
+//                            Button {
+//                                withAnimation {
+//                                        tasks.removeAll { $0.id == task.id }
+//                                    }
+//                            } label: {
+//                                Image(systemName: "trash")
+//                                    .foregroundColor(.red)
+//                            }
                         }
                     }
                 }
@@ -62,6 +81,7 @@ struct ContentView: View {
                 
                 HStack {
                     TextField("Новая задача", text: $newTask)
+                    
         
 
                     Button("Добавить") {
@@ -75,6 +95,8 @@ struct ContentView: View {
                         }
                         }
                     }
+                    
+                    
                 }
                 .padding()
                 
