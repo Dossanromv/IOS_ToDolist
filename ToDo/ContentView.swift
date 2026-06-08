@@ -18,11 +18,21 @@ struct TaskItem: Identifiable {
 
 
 
+
+
 struct ContentView: View {
     
-    @State private var tasks = ["Купить продукты", "Учить Swift", "Сделать проект"]
+    @State private var tasks = [
+        TaskItem(title: "Купить продукты"),
+        TaskItem(title: "Учить Swift"),
+        TaskItem(title: "Сделать проект")
+    ]
+    
+    
     @State private var newTask = ""
     @State private var isEditing = false
+    @FocusState private var isFocused: Bool
+
 
 
     var body: some View {
@@ -30,19 +40,35 @@ struct ContentView: View {
         NavigationView {
             VStack {
 
-                List(tasks, id: \.self) { task in
-                    Text(task)
+                List{
+                    ForEach(tasks) { task in
+                        Text(task.title)
+                    }
+                    .onDelete { indexSet in
+                        tasks.remove(atOffsets: indexSet)
+                    }
                 }
+
+                
+                
+                
                 HStack {
                     TextField("Новая задача", text: $newTask)
-                        .onTapGesture {
-                            isEditing = true
-                        }
+        
 
                     Button("Добавить") {
-                        tasks.append(newTask)
-                        newTask = ""
-                    } 
+                        if !newTask.isEmpty {
+                            
+                            
+                            tasks.append(TaskItem(title: newTask))
+                            newTask = ""
+                            isEditing = false
+                        }
+                    }
+                }
+                .padding()
+                
+
                 }
                 
                 
@@ -51,7 +77,7 @@ struct ContentView: View {
             
         }
     }
-}
+
 
 
 #Preview {
