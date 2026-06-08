@@ -32,58 +32,58 @@ struct ContentView: View {
     @State private var newTask = ""
     @State private var isEditing = false
     @FocusState private var isFocused: Bool
-
-
-
+    
+    
+    
     var body: some View {
         
         NavigationView {
             VStack {
-
+                
                 List{
                     ForEach(tasks) { task in
                         HStack {
                             
                             
                             Button {
-                                        withAnimation {
-                                            if let index = tasks.firstIndex(where: { $0.id == task.id }) {
-                                                tasks[index].isCompleted.toggle()
-                                            }
-                                        }
-                                    } label: {
-                                        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                                            .foregroundColor(task.isCompleted ? .green : .gray)
+                                withAnimation {
+                                    if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                                        tasks[index].isCompleted.toggle()
                                     }
-
-
-                                    Text(task.title)
-                                        .strikethrough(task.isCompleted)
-                                        .foregroundColor(task.isCompleted ? .gray : .primary)
-
-                                    Spacer()
+                                }
+                            } label: {
+                                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(task.isCompleted ? .green : .gray)
+                            }
                             
-//                            
-//                            Button {
-//                                withAnimation {
-//                                        tasks.removeAll { $0.id == task.id }
-//                                    }
-//                            } label: {
-//                                Image(systemName: "trash")
-//                                    .foregroundColor(.red)
-//                            }
+                            
+                            Text(task.title)
+                                .strikethrough(task.isCompleted)
+                                .foregroundColor(task.isCompleted ? .gray : .primary)
+                            
+                            Spacer()
+                            
+                            //
+                            //                            Button {
+                            //                                withAnimation {
+                            //                                        tasks.removeAll { $0.id == task.id }
+                            //                                    }
+                            //                            } label: {
+                            //                                Image(systemName: "trash")
+                            //                                    .foregroundColor(.red)
+                            //                            }
                         }
                     }
                 }
-
+                
                 
                 
                 
                 HStack {
                     TextField("Новая задача", text: $newTask)
                     
-        
-
+                    
+                    
                     Button("Добавить") {
                         
                         withAnimation {
@@ -91,25 +91,32 @@ struct ContentView: View {
                                 tasks.append(TaskItem(title: newTask))
                                 newTask = ""
                                 isEditing = false
-
-                        }
+                                
+                            }
                         }
                     }
+                    
+                    Button("Отменить") {
+                        
+                        withAnimation {
+                            newTask = ""
+                            tasks.removeAll()
+                        }
+                    }
+                    
+                    
                     
                     
                 }
                 .padding()
                 
-
-                }
-                
-                
             }
-            .navigationTitle("To Do List")
             
         }
+        .navigationTitle("To Do List")
+        
     }
-
+}
 
 
 #Preview {
