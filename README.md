@@ -24,26 +24,3 @@ A simple iOS task management app written in SwiftUI.
 ![image alt](https://github.com/Dossanromv/IOS_ToDolist/blob/1819cec7c2f3ea10faa64a89a23017f510f2f713/ScreensShot.png)
 
 
-
-# ToDo List App 📝
-
-Простое iOS приложение для управления задачами, написанное на SwiftUI.
-
-## Функции
-- Добавление новых задач
-- Отметка задач как выполненных
-- Удаление отдельных задач
-- Очистка всего списка
-
-## Технологии
-- Swift 5
-- SwiftUI
-- Xcode 16
-
-## Чему я научился
-- Работа с @State и @FocusState
-- List, ForEach, NavigationView
-- Анимации с withAnimation
-- Структуры с Identifiable и UUID
-
-## Скриншоты
