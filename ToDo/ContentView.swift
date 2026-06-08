@@ -82,8 +82,6 @@ struct ContentView: View {
                 HStack {
                     TextField("Новая задача", text: $newTask)
                     
-                    
-                    
                     Button("Добавить") {
                         
                         withAnimation {
@@ -91,22 +89,20 @@ struct ContentView: View {
                                 tasks.append(TaskItem(title: newTask))
                                 newTask = ""
                                 isEditing = false
-                                
                             }
                         }
                     }
-                    
-                    Button("Отменить") {
+                    // Вариант 2 - с иконкой
+                    Button() {
+                        newTask = ""
+                        tasks.removeAll()
+                    } label: {
                         
-                        withAnimation {
-                            newTask = ""
-                            tasks.removeAll()
-                        }
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                            
+
                     }
-                    
-                    
-                    
-                    
                 }
                 .padding()
                 
