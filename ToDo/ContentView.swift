@@ -94,8 +94,11 @@ struct ContentView: View {
                     }
                     // Вариант 2 - с иконкой
                     Button() {
-                        newTask = ""
-                        tasks.removeAll()
+                        withAnimation {
+                            newTask = ""
+                            tasks.removeAll()
+                        }
+                        
                     } label: {
                         
                         Image(systemName: "trash")
