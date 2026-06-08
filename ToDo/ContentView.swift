@@ -22,6 +22,7 @@ struct ContentView: View {
     
     @State private var tasks = ["Купить продукты", "Учить Swift", "Сделать проект"]
     @State private var newTask = ""
+    @State private var isEditing = false
 
 
     var body: some View {
@@ -34,6 +35,10 @@ struct ContentView: View {
                 }
                 HStack {
                     TextField("Новая задача", text: $newTask)
+                        .onTapGesture {
+                            isEditing = true
+                        }
+
                     Button("Добавить") {
                         tasks.append(newTask)
                         newTask = ""
