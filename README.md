@@ -1,13 +1,22 @@
-# Todo List
+# ToDo List App 📝
 
-iOS app built with SwiftUI.
+Простое iOS приложение для управления задачами, написанное на SwiftUI.
 
-## Features
-- Add tasks
-- Delete tasks
-- Mark as completed
+## Функции
+- Добавление новых задач
+- Отметка задач как выполненных
+- Удаление отдельных задач
+- Очистка всего списка
 
-## Tech
-- Swift
+## Технологии
+- Swift 5
 - SwiftUI
-- Xcode
+- Xcode 16
+
+## Чему я научился
+- Работа с @State и @FocusState
+- List, ForEach, NavigationView
+- Анимации с withAnimation
+- Структуры с Identifiable и UUID
+
+## Скриншоты
